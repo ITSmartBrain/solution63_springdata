@@ -94,12 +94,6 @@ public class ProductController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/created-after")
-    public ResponseEntity<List<Product>> getProductsCreatedAfter(
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-        return ResponseEntity.ok(productService.getProductsCreatedAfter(date));
-    }
-
     @GetMapping("/avg-price")
     public ResponseEntity<Map<String, Double>> getAveragePriceByCategory() {
         return ResponseEntity.ok(productService.getAveragePriceByCategory());

@@ -38,7 +38,6 @@ public class ProductServiceImpl implements ProductService {
         if (productRepository.existsByName(product.getName())) {
             throw new BusinessException("Product with name '" + product.getName() + "' already exists");
         }
-        product.setCreatedAt(LocalDate.now());
         return productRepository.save(product);
     }
 
@@ -87,11 +86,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void updateProductQuantity(Long id, Integer quantity) {
         productRepository.updateQuantity(id, quantity);
-    }
-
-    @Override
-    public List<Product> getProductsCreatedAfter(LocalDate date) {
-        return productRepository.findProductsCreatedAfter(date);
     }
 
     @Override

@@ -31,8 +31,6 @@ public interface ProductService {
 
     void updateProductQuantity(Long id, Integer quantity);
 
-    List<Product> getProductsCreatedAfter(LocalDate date);
-
     Map<String, Double> getAveragePriceByCategory();
 
     // Дополнительные методы

@@ -57,12 +57,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     void updateQuantity(@Param("id") Long id, @Param("quantity") Integer quantity);
 
     /**
-     * Найти товары, добавленные после указанной даты
-     */
-    @Query("SELECT p FROM Product p WHERE p.createdAt > :date")
-    List<Product> findProductsCreatedAfter(@Param("date") LocalDate date);
-
-    /**
      * Посчитать среднюю цену по категориям
      */
     @Query("SELECT p.category, AVG(p.price) FROM Product p GROUP BY p.category")
