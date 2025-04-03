@@ -99,7 +99,13 @@ public class ProductController {
         return ResponseEntity.ok(productService.getAveragePriceByCategory());
     }
 
-    // Дополнительные endpoints
+
+    /**
+     * Пример запроса:
+     * http://localhost:8080/api/products/by-categories?categories=Electronics&categories=Clothing
+     * @param categories список категорий
+     * @return
+     */
     @GetMapping("/by-categories")
     public ResponseEntity<List<Product>> getProductsByCategories(
             @RequestParam List<String> categories) {
@@ -115,6 +121,15 @@ public class ProductController {
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * Примеры запросов:
+     * http://localhost:8080/api/products/active-paged?page=0&size=10 - получение первой страницы с 10и записями
+     * http://localhost:8080/api/products/active-paged?page=1&size=10 - получение второй страницы с 10и записями
+     * http://localhost:8080/api/products/active-paged?page=3&size=10 - получение третьей страницы с 10и записями
+     * @param page номер страницы
+     * @param size кол-во записей на странице
+     * @return
+     */
     @GetMapping("/active-paged")
     public ResponseEntity<Page<Product>> getActiveProducts(
             @RequestParam(defaultValue = "0") int page,
